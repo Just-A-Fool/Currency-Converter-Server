@@ -1,27 +1,50 @@
-# Aedan's Boilerplate
+# Currency-Conversion Server
 
-## Set up
+Live app: 
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+Client GitHub: 
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "boilerplate"`
-7. Delete this README or create your own. 
+## API
+_________
+Unprotected-Endpoints
+_____________________
 
-## Scripts
 
-Start the application `npm start`
+`GET /convert` Returns the amount of a target currency that an amount of base currency would buy. Request body needs to be in the shape of: 
 
-Start nodemon for the application `npm run dev`
+    {
+        base_currency: [String],
+        base_amount: [Number or String representation of a number],
+        target_currency: [String]
+    }
 
-Run the tests `npm test`
+- Both base_currency and target_currency must be one of the following: USD, JPY, BGN, CZK, DKK, GBP, HUF, PLN, RON, SEK, CHF, ISK, NOK, HRK, RUB, TRY, AUD, BRL, CAD, CNY, HKD, IDR, ILS, INR, KRW, MXN, MYR, NZD, PHP, SGD, THB, ZAR
+- They can be any combination of upper/lowercase letters
 
-Run tests in watch mode `npm run testing`
+Returns data in the shape of:
 
-## Deploying
+    { 
+        target_currency: [String],
+        target_amount: [Number]
+    }
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+- target_currency will be the same as the previous example but will be returned as all uppercase letters.
+
+
+___________
+Errors
+
+
+- `All Errors` will return with an error status and an object with a message key. The error message is written there. 
+
+______
+
+
+
+## Summary
+
+This server allows users to convert between different currencies. This is based off the live exchange rates at https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
+
+## Technology Used
+
+Javascript, Express, Mocha, Chai
