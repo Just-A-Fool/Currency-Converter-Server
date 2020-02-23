@@ -1,8 +1,8 @@
 # Currency-Conversion Server
 
-Live app: 
+Live app: https://just-a-fool.github.io/Currency-Converter-Client/
 
-Client GitHub: 
+Client GitHub: https://github.com/Just-A-Fool/Currency-Converter-Client
 
 Live API: https://aedan-currency-converter.herokuapp.com/convert
 
