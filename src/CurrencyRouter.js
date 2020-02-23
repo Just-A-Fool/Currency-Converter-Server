@@ -3,7 +3,7 @@ const CurrencyService = require('./CurrencyService');
 
 const CurrencyRouter = express.Router();
 
-CurrencyRouter.get('/convert', async (req, res, next) => {
+CurrencyRouter.post('/convert', async (req, res, next) => {
     try {
         let { base_currency, base_amount, target_currency } = req.body;
 
